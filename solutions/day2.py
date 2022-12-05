@@ -1,6 +1,8 @@
 # --- Day 2: Rock Paper Scissors ---
 # https://adventofcode.com/2022/day/2
 
+from utils import get_input_path, read_data
+
 SHAPE_MAP = {"A": "R", "X": "R", "B": "P", "Y": "P", "C": "S", "Z": "S"}
 STRATEGY_MAP = {"X": "L", "Y": "D", "Z": "W"}
 WIN_MAP = {"A": "Y", "B": "Z", "C": "X"}
@@ -10,13 +12,10 @@ SHAPE_SCORE = {"X": 1, "Y": 2, "Z": 3}
 OUTCOME_SCORES = {"L": 0, "D": 3, "W": 6}
 
 
-def read_data(input_file):
-    with open(input_file) as f:
-        data = f.readlines()
-        data = [i.replace("\n", "") for i in data]
-        data = [i.split(" ") for i in data]
+def process_data(data):
+    processed_data = [i.split(" ") for i in data]
 
-    return data
+    return processed_data
 
 
 def solve_part_1(data):
@@ -34,7 +33,6 @@ def solve_part_1(data):
             outcome = "L"
 
         score = OUTCOME_SCORES[outcome] + SHAPE_SCORE[my_shape]
-
         result += score
 
     return result
@@ -57,17 +55,19 @@ def solve_part_2(data):
 
         shape_score = SHAPE_SCORE[my_shape]
         round_score = OUTCOME_SCORES[game_outcome]
-
         result += shape_score + round_score
 
     return result
 
 
 if __name__ == "__main__":
-    input_file = "../input/day2_input.txt"
-    data = read_data(input_file)
-    part_1 = solve_part_1(data)
-    part_2 = solve_part_2(data)
+    day = 2
+    input_path = get_input_path(day)
+    data = read_data(input_path)
 
-    print(f"The total score following the strategy guide is: {part_1}")
-    print(f"The total score following the elf's instructions is: {part_2}")
+    processed_data = process_data(data)
+    part_1 = solve_part_1(processed_data)
+    part_2 = solve_part_2(processed_data)
+
+    print(f"The total score following the strategy guide is: {part_1}.")
+    print(f"The total score following the elf's instructions is: {part_2}.")

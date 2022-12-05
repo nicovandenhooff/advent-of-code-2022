@@ -1,13 +1,13 @@
 # --- Day 1: Calorie Counting ---
+# https://adventofcode.com/2022/day/1
+
+from utils import get_input_path, read_data
 
 
-def read_data(input_file):
-    with open(input_file) as f:
-        data = f.readlines()
-        data = [i.replace("\n", "") for i in data]
-        data = [int(i) if i != "" else i for i in data]
+def process_data(data):
+    processed_data = [int(i) if i != "" else i for i in data]
 
-    return data
+    return processed_data
 
 
 def solve(data, n):
@@ -29,9 +29,13 @@ def solve(data, n):
 
 
 if __name__ == "__main__":
-    input_file = "../input/day1_input.txt"
-    data = read_data(input_file)
-    part1_result = solve(data, 1)
-    part2_result = solve(data, 3)
-    print(f"The elf is carrying {part1_result} calories!")
-    print(f"The top 3 elves are carrying {part2_result} calories!")
+    day = 1
+    input_path = get_input_path(day)
+    data = read_data(input_path)
+
+    processed_data = process_data(data)
+    part_1 = solve(processed_data, 1)
+    part_2 = solve(processed_data, 3)
+
+    print(f"The elf is carrying {part_1} calories.")
+    print(f"The top 3 elves are carrying {part_2} calories.")
