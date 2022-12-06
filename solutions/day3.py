@@ -2,12 +2,13 @@
 # https://adventofcode.com/2022/day/3
 
 import string
-from utils import get_input_path, read_data
+from utils import get_input_path, read_data, timer
 
 LETTERS = string.ascii_lowercase + string.ascii_uppercase
 PRIORITIES = {k: i + 1 for i, k in enumerate(LETTERS)}
 
 
+@timer
 def solve_part_1(data):
     total = 0
 
@@ -23,6 +24,7 @@ def solve_part_1(data):
     return total
 
 
+@timer
 def solve_part_2(data):
     total = 0
 
@@ -47,7 +49,7 @@ if __name__ == "__main__":
     data = read_data(input_path)
 
     part_1 = solve_part_1(data)
-    part_2 = solve_part_2(data)
-
     print(f"The sum of the common item priorities for each rucksack is: {part_1}.")
+
+    part_2 = solve_part_2(data)
     print(f"The sum of the common item priorities for each group is: {part_2}.")

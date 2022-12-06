@@ -1,7 +1,7 @@
 # --- Day 2: Rock Paper Scissors ---
 # https://adventofcode.com/2022/day/2
 
-from utils import get_input_path, read_data
+from utils import get_input_path, read_data, timer
 
 SHAPE_MAP = {"A": "R", "X": "R", "B": "P", "Y": "P", "C": "S", "Z": "S"}
 STRATEGY_MAP = {"X": "L", "Y": "D", "Z": "W"}
@@ -14,10 +14,10 @@ OUTCOME_SCORES = {"L": 0, "D": 3, "W": 6}
 
 def process_data(data):
     processed_data = [i.split(" ") for i in data]
-
     return processed_data
 
 
+@timer
 def solve_part_1(data):
     result = 0
 
@@ -38,6 +38,7 @@ def solve_part_1(data):
     return result
 
 
+@timer
 def solve_part_2(data):
     result = 0
 
@@ -64,10 +65,10 @@ if __name__ == "__main__":
     day = 2
     input_path = get_input_path(day)
     data = read_data(input_path)
-
     processed_data = process_data(data)
-    part_1 = solve_part_1(processed_data)
-    part_2 = solve_part_2(processed_data)
 
+    part_1 = solve_part_1(processed_data)
     print(f"The total score following the strategy guide is: {part_1}.")
+
+    part_2 = solve_part_2(processed_data)
     print(f"The total score following the elf's instructions is: {part_2}.")

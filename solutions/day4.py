@@ -1,7 +1,7 @@
 # --- Day 4: Camp Cleanup ---
 # https://adventofcode.com/2022/day/4
 
-from utils import get_input_path, read_data
+from utils import get_input_path, read_data, timer
 
 
 def process_data(data):
@@ -45,6 +45,7 @@ def overlaps(r1_start, r1_end, r2_start, r2_end):
         return 0
 
 
+@timer
 def solve(processed_data):
     part_1 = 0
     part_2 = 0
@@ -69,9 +70,8 @@ if __name__ == "__main__":
     day = 4
     input_path = get_input_path(day)
     data = read_data(input_path)
-
     processed_data = process_data(data)
-    part_1, part_2 = solve(processed_data)
 
+    part_1, part_2 = solve(processed_data)
     print(f"{part_1} pairs have ranges that fully contain the other.")
     print(f"{part_2} pairs have ranges that overlap with one another.")
