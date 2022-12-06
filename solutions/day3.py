@@ -18,8 +18,7 @@ def solve_part_1(data):
         compartments = set(items[:mid]), set(items[mid:])
         common_item = compartments[0].intersection(compartments[1])
         common_item = list(common_item)[0]
-        priority = PRIORITIES[common_item]
-        total += priority
+        total += PRIORITIES[common_item]
 
     return total
 
@@ -31,14 +30,13 @@ def solve_part_2(data):
     for i in range(0, len(data), 3):
         group = data[i : i + 3]
 
-        for i, g in enumerate(group):
-            group[i] = set(g)
+        for j, g in enumerate(group):
+            group[j] = set(g)
 
         # common item is the intersection of the three groups
         common_item = group[0].intersection(group[1], group[2])
         common_item = list(common_item)[0]
-        priority = PRIORITIES[common_item]
-        total += priority
+        total += PRIORITIES[common_item]
 
     return total
 

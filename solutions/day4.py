@@ -35,10 +35,10 @@ def overlaps(r1_start, r1_end, r2_start, r2_end):
     # one common number in the range
     if len(set([r1_start, r1_end]).intersection(set([r2_start, r2_end]))) > 0:
         return 1
-    # overlap from range 1 to 2
+    # some overlap from range 1 to 2
     elif r1_start < r2_start and r2_start < r1_end and r1_end < r2_end:
         return 1
-    # overlap from range 2 to 1
+    # osome verlap from range 2 to 1
     elif r2_start < r1_start and r1_start < r2_end and r2_end < r1_end:
         return 1
     else:
