@@ -12,6 +12,8 @@ solve_aoc () {
             echo "Day $i solution"
             python "$FILE"
             echo
+        else
+            echo "Day $i solution not completed yet"
         fi
     done
 }
