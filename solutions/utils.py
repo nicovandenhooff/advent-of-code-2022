@@ -1,6 +1,6 @@
 """Advent of Code 2022 utility functions."""
 
-import os
+import os, time
 
 
 def get_input_path(day):
@@ -18,3 +18,16 @@ def read_data(input_path):
         data = [i.replace("\n", "") for i in data]
 
     return data
+
+
+def timer(func):
+    """Decorator function used to time another function."""
+
+    def wrapped_func(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        print(f"Function {func.__name__!r} executed in {(end-start):.4f}s!")
+        return result
+
+    return wrapped_func
