@@ -58,16 +58,16 @@ def move_head(head, direction):
 
 
 def move_tail(tail, following):
-    # if norm = 2 we need to move up or down
+    # if norm = 2 we need to move either up|down|left|right
     if norm(following, tail) == 2:
         for i in [-1, 1]:
-            move_up = tail[0] + i, tail[1]
-            move_down = tail[0], tail[1] + i
+            move_1 = tail[0] + i, tail[1]
+            move_2 = tail[0], tail[1] + i
 
-            if norm(following, move_up) == 1:
-                return move_up
-            elif norm(following, move_down) == 1:
-                return move_down
+            if norm(following, move_1) == 1:
+                return move_1
+            elif norm(following, move_2) == 1:
+                return move_2
 
     # if norm > 2 we need to move diagonal
     elif norm(following, tail) > 2:
@@ -83,7 +83,9 @@ def move_tail(tail, following):
 
 
 def norm(head, tail):
-    return math.sqrt(math.pow((head[0] - tail[0]), 2) + math.pow((head[1] - tail[1]), 2))
+    return math.sqrt(
+        math.pow((head[0] - tail[0]), 2) + math.pow((head[1] - tail[1]), 2)
+    )
 
 
 if __name__ == "__main__":
