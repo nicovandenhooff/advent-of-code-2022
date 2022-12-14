@@ -5,6 +5,9 @@ import os, time
 
 def get_input_path(day):
     """Get the path to the input file for a day."""
+    if day < 10:
+        day = "0" + str(day)
+
     repo = os.path.dirname(os.path.split(os.path.abspath(__file__))[0])
     input_file = os.path.join("input", f"day{day}_input.txt")
     input_path = os.path.join(repo, input_file)
